@@ -1,3 +1,37 @@
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
+<div id="chat" class="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen" data-chat-id="<%= @chat.id %>" data-user-id="<%= @user.id %>" >
+  <div id="messages" class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
+    <% @chat.messages do |message| %>
+      <% if message.user_id == @user.id %>
+        <div class="chat-message">
+          <div class="flex items-end justify-end">
+            <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
+              <div><span class="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white"><%= message.content %></span></div>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="chat-message">
+          <div class="flex items-end">
+            <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
+              <div><span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600"><%= message.content %></span></div>
+            </div>
+          </div>
+        </div>
+      <% end%>
+    <% end%>
+  </div>
+  <div id="down-container" class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
+    <div id="input-container" class="relative flex">
+      <input id="input-message" type="text" placeholder="Write your message!" class="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 bg-gray-200 rounded-md py-3">
+      <div class="absolute right-0 items-center inset-y-0 sm:flex">
+        <button id='send-message' type="button" class="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none">
+          <span class="font-bold">Send</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 ml-2 transform rotate-90">
+            <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
