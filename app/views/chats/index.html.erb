@@ -1,0 +1,55 @@
+<div class="container mx-auto p-6 flex h-screen items-center justify-center w-full">
+  <div class="bg-white shadow-md rounded-lg p-6">
+    <%= form_with url: search_chats_path, method: :post, local: true, class: "grid grid-cols-1 md:grid-cols-2 gap-6" do |form| %>
+
+      <div>
+        <div class="mb-4">
+          <%= form.label :gender, "Your gender:", class: "block text-sm font-medium mb-2" %>
+          <div class="space-y-2">
+            <%= form.radio_button :gender, 2, checked: "checked", class: "mr-2" %> Doesn't matter <br>
+            <%= form.radio_button :gender, 1, class: "mr-2" %> Male <br>
+            <%= form.radio_button :gender, 0, class: "mr-2" %> Female <br>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <%= form.label :age, "Your age:", class: "block text-sm font-medium mb-2" %>
+          <div class="space-y-2">
+            <%= form.radio_button :age, [0, 18], checked: "checked", class: "mr-2" %> up to 18 years old <br>
+            <%= form.radio_button :age, [19, 25], class: "mr-2" %> from 19 to 25 years old <br>
+            <%= form.radio_button :age, [26, 35], class: "mr-2" %> from 26 to 35 years old <br>
+            <%= form.radio_button :age, [36, 120], class: "mr-2" %> over 36 years old
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="mb-4">
+          <%= form.label :partner_gender, "Interlocutor's gender:", class: "block text-sm font-medium mb-2" %>
+          <div class="space-y-2">
+            <%= form.radio_button :partner_gender, 2, checked: "checked", class: "mr-2" %> Doesn't matter
+            <br>
+            <%= form.radio_button :partner_gender, 1, class: "mr-2" %> Male <br>
+            <%= form.radio_button :partner_gender, 0, class: "mr-2" %> Female <br>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <%= form.label :partner_age, "Interlocutor's age:", class: "block text-sm font-medium mb-2" %>
+          <div class="space-y-2">
+            <%= form.radio_button :partner_age, [0, 18], checked: "checked", class: "mr-2" %> up to 18 years old <br>
+            <%= form.radio_button :partner_age, [19, 25], class: "mr-2" %> from 19 to 25 years old <br>
+            <%= form.radio_button :partner_age, [26, 35], class: "mr-2" %> from 26 to 35 years old <br>
+            <%= form.radio_button :partner_age, [36, 120], class: "mr-2" %> over 36 years old
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-6 md:col-span-2">
+        <%= form.submit 'Start a chat', class: "py-2 px-4 bg-green-500 text-white rounded-lg" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
